@@ -1,0 +1,8 @@
+[wokwi]
+version = 1
+firmware = '.pio/build/uno/firmware.hex'
+elf = '.pio/build/uno/firmware.elf'
+
+[[chip]]
+name = 'l293d'
+binary = 'chips/l293d/l293d.chip.wasm'
