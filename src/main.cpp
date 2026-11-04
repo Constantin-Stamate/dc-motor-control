@@ -1,18 +1,28 @@
 #include <Arduino.h>
+#include <Wire.h>
 
-// put function declarations here:
-int myFunction(int, int);
+#include "motor_driver/motor_driver.h"
+#include "lcd_driver/lcd_driver.h"
+
+int powerPercent = 0;
 
 void setup() {
-  // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+    Serial.begin(9600);
+
+    motorInit(10, 7, 6);
+    lcdInit();
+
+    powerPercent = 70;
+
+    setMotorPower(powerPercent);
+    lcdShowStatus(powerPercent);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-}
+    if (Serial.available()) {
+        powerPercent = Serial.parseInt();
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+        setMotorPower(powerPercent);
+        lcdShowStatus(powerPercent);
+    }
 }
