@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "author": "Constantin Stamate",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-arduino-uno", "id": "uno", "top": 0, "left": 0, "attrs": {} },
+    { "type": "chip-l293d", "id": "l293d", "top": -170, "left": 170, "attrs": {} },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -150,
+      "left": 330,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_fwd",
+      "top": -250,
+      "left": 40,
+      "attrs": { "color": "green", "label": "FWD" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led_rev",
+      "top": -250,
+      "left": 100,
+      "attrs": { "color": "red", "label": "REV" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_fwd",
+      "top": -190,
+      "left": 20,
+      "attrs": { "value": "220" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r_rev",
+      "top": -160,
+      "left": 20,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "uno:10", "l293d:EN1", "yellow", [] ],
+    [ "uno:7", "l293d:IN1", "green", [] ],
+    [ "uno:6", "l293d:IN2", "green", [] ],
+    [ "uno:5V", "l293d:VCC1", "red", [] ],
+    [ "uno:5V", "l293d:VCC2", "red", [] ],
+    [ "uno:GND.1", "l293d:GND1", "black", [] ],
+    [ "uno:GND.1", "l293d:GND2", "black", [] ],
+    [ "uno:GND.1", "l293d:GND3", "black", [] ],
+    [ "uno:GND.1", "l293d:GND4", "black", [] ],
+    [ "l293d:OUT1", "r_fwd:1", "orange", [] ],
+    [ "r_fwd:2", "led_fwd:A", "orange", [] ],
+    [ "led_fwd:C", "l293d:OUT2", "purple", [] ],
+    [ "l293d:OUT2", "r_rev:1", "purple", [] ],
+    [ "r_rev:2", "led_rev:A", "purple", [] ],
+    [ "led_rev:C", "l293d:OUT1", "orange", [] ],
+    [ "uno:5V", "lcd1:VCC", "red", [] ],
+    [ "uno:GND.2", "lcd1:GND", "black", [] ],
+    [ "uno:A4", "lcd1:SDA", "blue", [] ],
+    [ "uno:A5", "lcd1:SCL", "blue", [] ]
+  ],
+  "dependencies": {}
+}
