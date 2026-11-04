@@ -1,0 +1,23 @@
+{
+  "name": "L293D",
+  "author": "Constantin Stamate",
+  "pins": [
+    "EN1",
+    "IN1",
+    "OUT1",
+    "GND1",
+    "GND2",
+    "OUT2",
+    "IN2",
+    "VCC2",
+    "EN2",
+    "IN3",
+    "OUT3",
+    "GND3",
+    "GND4",
+    "OUT4",
+    "IN4",
+    "VCC1"
+  ],
+  "controls": []
+}
